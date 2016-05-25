@@ -9,7 +9,7 @@ It has (in this version) a basic responsive grid, normalize as CSS base, and typ
 
 ### Basic Sass, very sassy ###
 
-* You can find: A responsive grid, CSS normalize and typographic settings.
+* You can find: A responsive grid, CSS normalize and ~~typographic settings~~.
 * Version 1.0
 
 ### How do I get set up? ###
