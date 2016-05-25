@@ -47,5 +47,4 @@ Screen Size         | Column Name | Gutter Size | Column Size
 * Every "special" named column (col-xl-#, col-l-#, col-m-#, col-s-# and col-xs-#) works only in their specific breakpoint.
 * Columns in all breakpoints are pixel-sized, except in 489px and down (XS breakpoint), which are percentage-sized.
 
-
-:license: MIT, see LICENSE for more details.
+License | MIT, see LICENSE for more details. |
