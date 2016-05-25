@@ -1,0 +1,11 @@
+// You can comment this whole scss partial. Why? Because is only for showing the cols on the grid.html. :)
+.row {
+	margin-bottom: 15px;
+}
+@for $i from 1 through 12 {
+    .col-#{$i} {
+    		padding:10px; 
+        background-color: #ffcc00;
+        text-align: center;
+    }
+}

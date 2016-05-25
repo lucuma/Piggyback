@@ -1,0 +1,196 @@
+*, *:after, *:before {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; 
+}
+
+//----- Extends
+%clearfix:after {
+    display:block;
+    clear:both;
+    content:'';
+}
+// Why? Read: http://blog.teamtreehouse.com/a-better-clearfix-with-sass
+
+//----- Breakpoints
+$breakpoint-xs: "only screen and (max-width: 489px)";
+$breakpoint-s: "only screen and (min-width: 490px)";
+$breakpoint-m: "only screen and (min-width: 740px)";
+$breakpoint-l: "only screen and (min-width: 980px)";
+$breakpoint-xl: "only screen and (min-width: 1220px)";
+
+//----- Grid System
+$container-max-width: 96%;
+$grid-spacing: 2.040816%;
+$grid-cols: 12;
+
+.wrapper {
+    width: $container-max-width;
+    margin: 0 auto;
+    background-color: #efefef;
+}
+.row {
+    *zoom: 1;
+    margin-left: -$grid-spacing;
+    &:before, &:after {
+    display: table;
+    content: "";
+    }
+    &:after {
+        clear: both;
+    }
+}
+img {
+    width: auto;
+    max-width: 100%;
+    height: auto !important; 
+}
+ 
+//----- Columns (Manual)
+/*
+.col-1  { width:5.583333333333333%; }
+.col-2  { width:14.16666666666667%; }
+.col-3  { width:22.75%; }
+.col-4  { width:31.33333333333333%; }
+.col-5  { width:39.91666666666667%; }
+.col-6  { width:48.5%; }
+.col-7  { width:57.08333333333333%; }
+.col-8  { width:65.66666666666666%; }
+.col-9  { width:74.25%; }
+.col-10 { width:82.83333333333333%; }
+.col-11 { width:91.41666666666666%; }
+.col-12 { width:100%; }
+*/
+
+@for $i from 1 through 12 {
+    .col-#{$i} {
+        float: left;
+        width: ($container-max-width / ($grid-cols/$i)) - ($grid-spacing * ($grid-cols - $i) / $grid-cols);
+        margin-left: $grid-spacing;
+    }
+}
+
+//----- Columns (Automatic)
+@media #{$breakpoint-xs} {
+    $container-max-width: 98%;
+    $grid-spacing: 2%;
+    $grid-cols: 12;
+    .wrapper {
+        width: $container-max-width;
+        margin: 0 auto;
+    }
+    .row {
+        margin-left: -($container-max-width / $grid-spacing);
+    }
+    @for $i from 1 through 12 {
+        .col-#{$i} { 
+            width: 100% - $grid-spacing;
+            margin-bottom: 10px;
+        }
+    }
+    @for $i from 1 through 12 {
+        .col-xs-#{$i} {
+            float: left;
+            height: 150px;
+            width: (($container-max-width) / ($grid-cols/$i)) - ($grid-spacing * ($grid-cols - $i) / $grid-cols);
+            margin-left: $grid-spacing;
+            background-color: #ff0000;
+        }
+    }
+}
+@media #{$breakpoint-s} {
+    $container-max-width: 490px;
+    $grid-spacing: 10px;
+    .wrapper {
+        width: $container-max-width;
+    }
+    .row {
+        margin-left: -$grid-spacing;
+    }
+    //----- Columns (Automatic)
+    @for $i from 1 through 12 {
+        .col-#{$i} {
+            width: ($container-max-width / ($grid-cols/$i)) - ($grid-spacing * ($grid-cols - $i) / $grid-cols);
+            float: left;
+            margin-left: $grid-spacing;
+        }
+    }
+    @for $i from 1 through 12 {
+        .col-s-#{$i} {
+            width: ($container-max-width / ($grid-cols/$i)) - ($grid-spacing * ($grid-cols - $i) / $grid-cols);
+            float: left;
+            margin-left: $grid-spacing;
+        }
+    }
+}
+@media #{$breakpoint-m} {
+    $container-max-width: 740px;
+    $grid-spacing: 20px;
+    .wrapper {
+        width: $container-max-width;
+    }
+    .row {
+        margin-left: -$grid-spacing;
+    }
+    //----- Columns (Automatic)
+    @for $i from 1 through 12 {
+        .col-#{$i} {
+            width: ($container-max-width / ($grid-cols/$i)) - ($grid-spacing * ($grid-cols - $i) / $grid-cols);
+            float: left;
+            margin-left: $grid-spacing;
+        }
+    }
+    @for $i from 1 through 12 {
+        .col-m-#{$i} {
+            width: ($container-max-width / ($grid-cols/$i)) - ($grid-spacing * ($grid-cols - $i) / $grid-cols);
+            float: left;
+            margin-left: $grid-spacing;
+        }
+    }
+}
+
+@media #{$breakpoint-l} {
+    $container-max-width: 980px;
+    $grid-spacing: 20px;
+    .wrapper {
+        width: $container-max-width;
+    }
+    .row {
+        margin-left: -$grid-spacing;
+    }
+    //----- Columns (Automatic)
+    @for $i from 1 through 12 {
+        .col-#{$i} {
+            width: ($container-max-width / ($grid-cols/$i)) - ($grid-spacing * ($grid-cols - $i) / $grid-cols);
+            float: left;
+            margin-left: $grid-spacing;
+        }
+    }
+    @for $i from 1 through 12 {
+        .col-l-#{$i} {
+            width: ($container-max-width / ($grid-cols/$i)) - ($grid-spacing * ($grid-cols - $i) / $grid-cols);
+            float: left;
+            margin-left: $grid-spacing;
+        }
+    }
+}
+@media #{$breakpoint-xl} {
+    $container-max-width: 1220px;
+    $grid-spacing: 20px;
+    $grid-cols: 12;
+    .wrapper {
+        width: $container-max-width;
+    }
+    .row {
+        margin-left: -$grid-spacing;
+    }
+    @for $i from 1 through 12 {
+        .col-#{$i} {
+            float: left;
+            width: ($container-max-width / ($grid-cols/$i)) - ($grid-spacing * ($grid-cols - $i) / $grid-cols);
+            margin-left: $grid-spacing;
+        }
+    }
+} 
